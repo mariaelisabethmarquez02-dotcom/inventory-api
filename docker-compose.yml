@@ -1,5 +1,22 @@
 services:
 
+  frontend:
+    build:
+      context: ../inventario-frontend
+      dockerfile: Dockerfile
+
+    container_name: angular-frontend
+
+    ports:
+      - "4200:4200"
+
+    volumes:
+      - ../inventario-frontend:/app
+      - /app/node_modules
+
+    depends_on:
+      - app
+
   app:
     build: .
 
